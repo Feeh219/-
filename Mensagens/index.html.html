@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Mensagens Especiais</title>
+<style>
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #fff0f6;
+    color: #5a2a55;
+    margin: 0; padding: 20px;
+    display: flex; flex-direction: column; align-items: center;
+  }
+  h1 {
+    margin-bottom: 10px;
+    color: #b33951;
+  }
+  p.intro {
+    font-style: italic;
+    margin-bottom: 25px;
+    max-width: 400px;
+    text-align: center;
+  }
+  .container {
+    display: flex; flex-wrap: wrap; justify-content: center; gap: 20px;
+    max-width: 800px;
+  }
+  .card {
+    background: #ffd6e8;
+    border-radius: 12px;
+    width: 160px;
+    padding: 15px;
+    box-shadow: 0 2px 8px rgba(179, 57, 81, 0.3);
+    cursor: pointer;
+    transition: transform 0.2s ease;
+    user-select: none;
+  }
+  .card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(179, 57, 81, 0.6);
+  }
+  .name {
+    font-weight: 700;
+    font-size: 1.2em;
+    margin-bottom: 6px;
+  }
+  .nickname {
+    font-size: 0.95em;
+    color: #7a4669;
+    margin-bottom: 10px;
+  }
+  .message-box {
+    background: #fce4ec;
+    border-radius: 12px;
+    padding: 20px;
+    margin-top: 30px;
+    max-width: 700px;
+    box-shadow: 0 2px 10px rgba(179, 57, 81, 0.2);
+    white-space: pre-line;
+    font-size: 1.1em;
+    color: #682c4b;
+    display: none;
+  }
+  .close-btn {
+    background: #b33951;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-weight: 700;
+    cursor: pointer;
+    margin-top: 15px;
+    transition: background 0.3s ease;
+  }
+  .close-btn:hover {
+    background: #7a1f38;
+  }
+</style>
+</head>
+<body>
+
+<h1>✨ Mensagens do Meu Coração ✨</h1>
+<p class="intro">Clique no seu quadradinho e receba uma mensagem feita com todo meu carinho. Você mora no meu coração. 💖</p>
+
+<div class="container">
+  <div class="card" data-apelido="Pocoyo">
+    <div class="name">Amanda</div>
+    <div class="nickname">Pocoyo</div>
+  </div>
+  <div class="card" data-apelido="My Hopper">
+    <div class="name">Lemos</div>
+    <div class="nickname">My Hopper</div>
+  </div>
+  <div class="card" data-apelido="Nego Doce">
+    <div class="name">Fabers</div>
+    <div class="nickname">Nego Doce</div>
+  </div>
+</div>
+
+<div id="messageBox" class="message-box">
+  <div id="messageText"></div>
+  <button class="close-btn" onclick="closeMessage()">Fechar</button>
+</div>
+
+<script>
+  const mensagens = {
+    "Pocoyo": `Amanda, você é como uma tarde calma de primavera: cheia de leveza, sorrisos suaves e um carinho que aquece até os cantinhos mais frios do coração.
+Teu jeito gentil sempre me lembra que existe beleza nas pequenas coisas.
+Obrigada por ser esse solzinho constante, por estar perto mesmo quando o mundo está meio nublado.
+Você é tipo uma flor rara: linda, sensível e cheia de vida. 🌸` ,
+
+    "My Hopper": `Lemos, tem algo no seu sorriso que me desarma, me acalma, me faz respirar mais leve.
+É como se sua presença tivesse a capacidade de silenciar todas as confusões do dia.
+Você tem essa energia que abraça mesmo de longe, esse jeito que faz qualquer lugar parecer lar.
+E só queria que você soubesse o quanto sua existência torna o mundo mais bonito. ✨` ,
+
+    "Nego Doce": `Fabers, tem gente que a gente encontra na vida e parece que já conhecia de outras existências.
+Você é assim pra mim: alguém que não precisa de muitas palavras pra ser casa, que escuta até o silêncio com afeto.
+Estar com você é leve, é natural, é como respirar num lugar onde tudo faz sentido.
+Obrigada por ser constante, por ser coração tranquilo e presença bonita. 💚`
+  };
+
+  const cards = document.querySelectorAll('.card');
+  const messageBox = document.getElementById('messageBox');
+  const messageText = document.getElementById('messageText');
+
+  cards.forEach(card => {
+    card.addEventListener('click', () => {
+      const apelido = card.getAttribute('data-apelido');
+      messageText.textContent = mensagens[apelido] || "Mensagem não encontrada.";
+      messageBox.style.display = 'block';
+    });
+  });
+
+  function closeMessage() {
+    messageBox.style.display = 'none';
+  }
+</script>
+
+</body>
+</html>
